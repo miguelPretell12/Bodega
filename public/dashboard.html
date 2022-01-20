@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="build/css/app.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="build/css/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="build/css/datatables/datatables.min.css">
+
+    <script src="build/js/jquery.min.js"></script>
+    <script src="build/js/datatables.min.js"></script>
+</head>
+
+<body>
+    <div class="grid-dashboard">
+        <div class="nav-dashboard">
+            <div class="logo">
+                <h2 class="titulo">Ventas</h2>
+            </div>
+            <ul class="nav-enlance">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Gastos</a></li>
+                <li><a href="#">Yape</a></li>
+            </ul>
+        </div>
+        <div class="content-dashboard">
+            <div class="header-dashboard">
+                <div class="head-content">
+                    <a href="#"><i class="fas fa-cog"></i></a>
+                    <a href="#"><i class="fas fa-info-circle"></i></a>
+                </div>
+                <div class="info-content">
+                    <div class="info">
+                        <div class="info-text">
+                            <p>User Admin</p>
+                            <span>Role:</span>
+                        </div>
+                        <img src="build/img/img1.jpg " alt="" class="img-info">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-content contenedor">
+                <div class="d-flex flex-beetwen">
+                    <h1 class="titulo titulo-content">Contenido</h1>
+                    <button class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Hola</button>
+                </div>
+
+                <table class="table w-100" id="table_id">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre y Apellido</th>
+                            <th>Correo Electronico</th>
+                            <th>D.N.I</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+
+        })
+    </script>
+</body>
+
+</html>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>

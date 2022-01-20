@@ -1,0 +1,122 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+body {
+  font-family: "Roboto Condensed", sans-serif !important;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/contabilidad.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  /* ======  ====== */
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+  padding: 25px 15px;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  max-width: 300px;
+  width: 90%;
+}
+
+.input-form {
+  margin-bottom: 10px;
+  position: relative;
+  .fa-envelope,
+  .fa-key {
+    font-size: 1.6rem;
+    // font-weight: 700;
+    position: absolute;
+    left: 3%;
+    top: 15%;
+    bottom: 3%;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  input {
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    padding: 10px 15px 10px 40px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.m-1 {
+  margin: 10px;
+}
+
+.mt-1 {
+  margin-top: 10px;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.fa-sign-in-alt {
+  font-size: 1.2rem;
+}
+
+.text-right {
+  text-align: left;
+}
+
+.imagen-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  img {
+    max-width: 250px;
+    width: 60%;
+    margin-top: -40%;
+    border: none;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    padding: 0;
+  }
+}
+
+.opciones {
+  margin-top: 15px;
+  a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+  }
+  span {
+    font-weight: 700;
+    margin-right: 5px;
+  }
+}

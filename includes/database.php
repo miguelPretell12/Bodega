@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', '1234', 'app_bodega');
+$db = mysqli_connect('localhost', 'root', '1234', 'app_conta');
 
 mysqli_set_charset($db, 'utf8');
 
