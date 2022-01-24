@@ -24,7 +24,7 @@ class Router
         session_start();
 
         // Arreglo de rutas protegidas...
-        // $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
+        $rutas_protegidas = ['/'];
 
         // $auth = $_SESSION['login'] ?? null;
 
@@ -37,6 +37,9 @@ class Router
             $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
+        if (!empty($_SESSION) && $_SERVER['REQUEST_URI'] == "/") {
+            header("location: /" . $_SESSION['cargo'] . "");
+        }
 
         if ($fn) {
             // Call user fn va a llamar una función cuando no sabemos cual sera

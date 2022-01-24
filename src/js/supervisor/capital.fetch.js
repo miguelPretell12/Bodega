@@ -25,7 +25,7 @@ function tableAll() {
   $("#table_id").DataTable({
     destroy: true,
     ajax: {
-      method: "GET",
+      method: "POST",
       url: "/supervisor/capitales",
     },
     columns: [

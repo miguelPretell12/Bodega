@@ -18,6 +18,7 @@ class SupervisorController
 
     public static function index(Router $router)
     {
+        isSupervisor();
         $contenido = "select
             u.id as id,
             concat(u.nombre,' ',u.apellido) as empleado,
@@ -39,6 +40,7 @@ class SupervisorController
 
     public static function listaEmpleados()
     {
+        isSupervisor();
         $contenido = "select
             u.id as id,
             concat(u.nombre,' ',u.apellido) as empleado,
@@ -59,6 +61,7 @@ class SupervisorController
 
     public static function sedeAuth()
     {
+        isSupervisor();
         $id = $_SESSION['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
@@ -73,6 +76,7 @@ class SupervisorController
 
     public static function capitalAuth()
     {
+        isSupervisor();
         date_default_timezone_set("America/Lima");
         $contenido = "SELECT 
             c.id as id,  
@@ -91,6 +95,7 @@ class SupervisorController
 
     public static function capitales()
     {
+        isSupervisor();
         $contenido = "SELECT 
             c.id as id,  
             s.nombre as sede,
@@ -107,6 +112,7 @@ class SupervisorController
 
     public static function getCapital()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -120,11 +126,13 @@ class SupervisorController
 
     public static function capital(Router $router)
     {
+        isSupervisor();
         $router->viewDashboard("supervisor/capital", []);
     }
 
     public static function createCapital()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $capital = new Capital($_POST);
             $verificarFecha = Capital::where('fecha', date("Y-m-d"));
@@ -148,6 +156,7 @@ class SupervisorController
 
     public static function updateCapital()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -165,6 +174,7 @@ class SupervisorController
 
     public static function asignacionEmpleado()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             date_default_timezone_set("America/Lima");
             $asigEmpl = new empleadoCapital($_POST);
@@ -202,7 +212,7 @@ class SupervisorController
     // Mirar la capital y los apuntes como gastos, yapes, y prestamos (posiblemente esteen)
     public static function viewCapital(Router $router)
     {
-
+        isSupervisor();
         $contenido = "
             SELECT 
                 c.id as id,
@@ -218,9 +228,6 @@ class SupervisorController
         ";
         $respuesta = ViewCapital::SQL($contenido);
 
-        $contenidoAnotacion = "";
-
-
         $router->viewDashboard("supervisor/viewCapital", [
             "respuesta" => $respuesta
         ]);
@@ -228,7 +235,7 @@ class SupervisorController
 
     public static function viewCapitalXCategoria()
     {
-
+        isSupervisor();
         $id = $_GET['id'] ?? null;
         $contenido = "SELECT 
                 c.id as id,
@@ -248,6 +255,7 @@ class SupervisorController
 
     public static function getCategorias()
     {
+        isSupervisor();
         $contenido = "select 
         ct.id as id,
         ct.nombre as nombre
@@ -265,6 +273,7 @@ class SupervisorController
 
     public static function createAnotacion()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $anotacion = new Anotacion($_POST);
 
@@ -277,6 +286,7 @@ class SupervisorController
     }
     public static function getAnotacion()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $anotacion = Anotacion::find($_POST['id']);
 
@@ -288,6 +298,7 @@ class SupervisorController
 
     public static function updateAnotacion()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $anotacion = Anotacion::find($_POST['id']);
             $anotacion->sincronizar($_POST);
@@ -300,6 +311,7 @@ class SupervisorController
 
     public static function getAnotaciones()
     {
+        isSupervisor();
         $contenido = "select
             a.id as id,
             ct.nombre as categoria,
@@ -319,6 +331,7 @@ class SupervisorController
 
     public static function deleteAnotacion()
     {
+        isSupervisor();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $anotacion = new Anotacion($_POST);
 
@@ -326,5 +339,11 @@ class SupervisorController
                 "res" => $anotacion->eliminar()
             ]);
         }
+    }
+
+    public static function cerrar()
+    {
+        $_SESSION = [];
+        header("Location: /");
     }
 }

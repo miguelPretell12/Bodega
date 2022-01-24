@@ -50,6 +50,7 @@
                 <div class="head-content">
                     <a href="/<?php echo $_SESSION['cargo'] ?>/config"><i class=" fas fa-cog"></i></a>
                     <a href="/<?php echo $_SESSION['cargo'] ?>/info"><i class="fas fa-info-circle"></i></a>
+                    <a href="/<?php echo $_SESSION['cargo'] ?>/cerrar"><i class="fas fa-door-open"></i></a>
                 </div>
                 <div class="info-content">
                     <div class="info">

@@ -45,7 +45,7 @@ async function iniciar(data) {
       });
     } else if (cargo == "empleado") {
       Swal.fire("Exito!", mensaje, "success").then(() => {
-        window.location.href = "/employee";
+        window.location.href = "/empleado";
       });
     }
   } else {
