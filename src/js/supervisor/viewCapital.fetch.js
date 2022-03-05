@@ -103,7 +103,7 @@ function eliminarAnotacion() {
 }
 
 async function getAnotacion(data) {
-  const url = "http://localhost:4000/supervisor/getAnotacion";
+  const url = " /supervisor/getAnotacion";
   spinnerHide("flex");
   const respuesta = await fetch(url, {
     method: "POST",
@@ -129,7 +129,7 @@ async function getCategorias() {
 
   const params = new URLSearchParams(getId);
   const id = params.get("id");
-  const url = `http://localhost:4000/supervisor/getCategorias?id=${id}`;
+  const url = ` /supervisor/getCategorias?id=${id}`;
   const respuesta = await fetch(url);
   const resultado = await respuesta.json();
 
@@ -151,7 +151,7 @@ async function viewCapitalXCategoria() {
   const params = new URLSearchParams(getId);
   const id = params.get("id");
 
-  const url = `http://localhost:4000/supervisor/viewCapitalXCategoria?id=${id}`;
+  const url = ` /supervisor/viewCapitalXCategoria?id=${id}`;
   const respuesta = await fetch(url);
 
   const resultado = await respuesta.json();
@@ -169,7 +169,7 @@ async function viewCapitalXCategoria() {
 }
 
 async function create(data) {
-  const url = "http://localhost:4000/supervisor/createAnotacion";
+  const url = " /supervisor/createAnotacion";
   spinnerHide("flex");
   const respuesta = await fetch(url, { method: "POST", body: data });
   if (respuesta) {
@@ -187,7 +187,7 @@ async function create(data) {
 }
 
 async function update(data) {
-  const url = "http://localhost:4000/supervisor/updateAnotacion";
+  const url = " /supervisor/updateAnotacion";
   spinnerHide("flex");
   const respuesta = await fetch(url, { method: "POST", body: data });
   if (respuesta) {
@@ -205,7 +205,7 @@ async function update(data) {
 }
 
 async function remove(data) {
-  const url = "http://localhost:4000/supervisor/deleteAnotacion";
+  const url = " /supervisor/deleteAnotacion";
   spinnerHide("flex");
   const respuesta = await fetch(url, { method: "POST", body: data });
   if (respuesta) {

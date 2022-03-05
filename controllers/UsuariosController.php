@@ -16,7 +16,8 @@ class UsuariosController
     public static function getUsuarios()
     {
         $contenido = "select
-        u.id as id, concat(u.nombre,' ', u.apellido) as nombre, u.dni as dni, u.correo as correo,
+        u.id as id, concat(u.nombre,' ', u.apellido) as nombre, 
+        u.dni as dni, u.correo as correo,
         c.nombre as cargo, u.estado as estado
         from usuarios u inner join cargos c on c.id = u.idCargo";
 
@@ -71,7 +72,7 @@ class UsuariosController
             $usuario = Usuarios::find($id);
 
             $usuario->sincronizar($_POST);
-            $usuario->hashPassword();
+            // $usuario->hashPassword();
 
             $resultado = $usuario->guardar();
             echo json_encode([

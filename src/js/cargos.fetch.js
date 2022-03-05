@@ -11,7 +11,7 @@ $(document).on("click", "#btn", function () {
 });
 
 async function create(data) {
-  const url = `http://localhost:4000/dashboard/cargos/create`;
+  const url = ` /dashboard/cargos/create`;
   const resp = await fetch(url, {
     method: "POST",
     body: data,
@@ -119,7 +119,7 @@ function clean() {
 }
 
 async function getCargo(data) {
-  const url = "http://localhost:4000/dashboard/cargos/getCargo";
+  const url = " /dashboard/cargos/getCargo";
   const resp = await fetch(url, {
     method: "POST",
     body: data,
@@ -132,7 +132,7 @@ async function getCargo(data) {
 }
 
 async function update(data) {
-  const url = "http://localhost:4000/dashboard/cargos/update";
+  const url = " /dashboard/cargos/update";
   const resp = await fetch(url, {
     method: "POST",
     body: data,
@@ -146,7 +146,7 @@ async function update(data) {
 }
 
 async function remove(data) {
-  const url = "http://localhost:4000/dashboard/cargos/delete";
+  const url = " 0/dashboard/cargos/delete";
 
   const resp = await fetch(url, {
     method: "POST",

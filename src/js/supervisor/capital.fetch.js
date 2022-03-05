@@ -92,7 +92,7 @@ function obtenerData() {
 }
 
 async function getCapital(data) {
-  const url = "http://localhost:4000/supervisor/getCapital";
+  const url = " /supervisor/getCapital";
   spinnerHide("flex");
   const respuesta = await fetch(url, {
     method: "POST",
@@ -113,7 +113,7 @@ async function getCapital(data) {
 }
 
 async function create(data) {
-  const url = "http://localhost:4000/supervisor/createCapital";
+  const url = " /supervisor/createCapital";
   spinnerHide("flex");
   const respuesta = await fetch(url, {
     method: "POST",
@@ -135,7 +135,7 @@ async function create(data) {
 }
 
 async function sedeSupervisor() {
-  const url = "http://localhost:4000/supervisor/sedeSupervisor";
+  const url = " /supervisor/sedeSupervisor";
   const respuesta = await fetch(url);
   const resultado = await respuesta.json();
   const { datas } = resultado;
@@ -152,7 +152,7 @@ async function sedeSupervisor() {
 }
 
 async function listaEmpleado() {
-  const url = "http://localhost:4000/supervisor/listaEmpleados";
+  const url = " /supervisor/listaEmpleados";
   const respuesta = await fetch(url);
   const resultado = await respuesta.json();
 
@@ -173,7 +173,7 @@ async function listaEmpleado() {
 }
 
 async function listaCapital() {
-  const url = "http://localhost:4000/supervisor/capitalAuth";
+  const url = " /supervisor/capitalAuth";
   const respuesta = await fetch(url);
   const resultado = await respuesta.json();
 
@@ -192,7 +192,7 @@ async function listaCapital() {
 }
 
 async function updateCapital(data) {
-  const url = "http://localhost:4000/supervisor/updateCapital";
+  const url = " /supervisor/updateCapital";
   spinnerHide("flex");
   const respuesta = await fetch(url, {
     method: "POST",
@@ -216,7 +216,7 @@ async function updateCapital(data) {
 }
 
 async function createAsignacion(data) {
-  const url = "http://localhost:4000/supervisor/asignacionEmpleado";
+  const url = " /supervisor/asignacionEmpleado";
   spinnerHide("flex");
   const respuesta = await fetch(url, { method: "POST", body: data });
 

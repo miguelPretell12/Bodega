@@ -137,7 +137,7 @@ function formularioAn() {
 
 //Funciones asyncronas
 async function getCapitalEmpleado(datas) {
-  const url = "http://localhost:4000/empleado/getCapital";
+  const url = " /empleado/getCapital";
   spinnerHide("flex");
   const respuesta = await fetch(url, {
     method: "POST",
@@ -165,7 +165,7 @@ async function getCapitalEmpleado(datas) {
 }
 
 async function update(data) {
-  const url = "http://localhost:4000/empleado/updateCapital";
+  const url = " /empleado/updateCapital";
   spinnerHide("flex");
   const respuesta = await fetch(url, {
     method: "POST",
@@ -192,7 +192,7 @@ async function getCategorias() {
 
   const params = new URLSearchParams(getId);
   const id = params.get("id");
-  const url = `http://localhost:4000/empleado/getCategorias?id=${id}`;
+  const url = ` /empleado/getCategorias?id=${id}`;
   const respuesta = await fetch(url);
   const resultado = await respuesta.json();
 
@@ -216,7 +216,7 @@ async function getCapital() {
   const params = new URLSearchParams(getId);
   const id = params.get("id");
 
-  const url = `http://localhost:4000/empleado/getCapitalE?capital=${id}`;
+  const url = ` /empleado/getCapitalE?capital=${id}`;
   const respuesta = await fetch(url);
   const resultado = await respuesta.json();
 
@@ -235,7 +235,7 @@ async function getCapital() {
 }
 
 async function createAnotacion(data) {
-  const url = "http://localhost:4000/empleado/createAnotacion";
+  const url = " /empleado/createAnotacion";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -255,7 +255,7 @@ async function createAnotacion(data) {
 }
 
 async function getSedeXEmpleado() {
-  const url = "http://localhost:4000/empleado/getSedeXEmpleado";
+  const url = " /empleado/getSedeXEmpleado";
 
   const respuesta = await fetch(url);
 
@@ -277,7 +277,7 @@ function spinnerHide(res) {
 }
 
 async function createCapital(data) {
-  const url = "http://localhost:4000/empleado/createCapital";
+  const url = " /empleado/createCapital";
   spinnerHide("flex");
   const respuesta = await fetch(url, {
     method: "POST",

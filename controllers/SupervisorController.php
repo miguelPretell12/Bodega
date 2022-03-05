@@ -84,7 +84,7 @@ class SupervisorController
             c.precio as capital,
             c.fecha as fecha
         FROM capital c 
-        INNER JOIN sedes s on s.id = c.idSede
+        INNER JOIN sedes s on s.idUsuario = c.idUsuario
         where c.idUsuario = " . $_SESSION['id'] . " and c.fecha = '" . date("Y-m-d") . "'";
         $resultado = CapitalSede::SQL($contenido);
 
@@ -102,7 +102,7 @@ class SupervisorController
             c.precio as capital,
             c.fecha as fecha
         FROM capital c 
-        INNER JOIN sedes s on s.id = c.idSede
+        INNER JOIN sedes s on s.idUsuario = c.idUsuario
         where c.idUsuario = " . $_SESSION['id'];
         $resultado = CapitalSede::SQL($contenido);
         echo json_encode([
@@ -136,8 +136,8 @@ class SupervisorController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $capital = new Capital($_POST);
             $verificarFecha = Capital::where('fecha', date("Y-m-d"));
-            $verificarSede = Capital::where('idSede', $capital->idSede);
-            if ($verificarFecha && $verificarSede) {
+            // $verificarSede = Capital::where('idSede', $capital->idSede);
+            if ($verificarFecha) {
                 echo json_encode([
                     "res" => true,
                     "mensaje" => "La Capital solo se puede registrar uno por fecha y por sede"

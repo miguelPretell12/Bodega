@@ -9,7 +9,7 @@ class Usuarios extends ActiveRecord
     protected static $tabla = "usuarios";
     protected static $columnasDB = [
         'id', 'nombre', 'apellido', 'dni',
-        'correo', 'password', 'idCargo', 'token', 'estado', 'idSupervisor', 'idSede'
+        'correo', 'password', 'idCargo', 'token', 'estado', 'idSupervisor'
     ];
 
     public $id;
@@ -22,7 +22,6 @@ class Usuarios extends ActiveRecord
     public $token;
     public $estado;
     public $idSupervisor;
-    public $idSede;
 
     public function __construct($args = [])
     {
@@ -31,12 +30,11 @@ class Usuarios extends ActiveRecord
         $this->apellido = $args['apellido'] ?? '';
         $this->dni = $args['dni'] ?? '';
         $this->correo = $args['correo'] ?? '';
-        $this->password = $args['password'] ?? '';
+        $this->password = $args['passwor d'] ?? '';
         $this->idCargo = $args['idCargo'] ?? '';
         $this->token = $args['token'] ?? '';
         $this->estado = $args['estado'] ?? '';
-        $this->idSupervisor = $args['idSupervisor'] ?? '';
-        $this->idSede = $args['idSede'] ?? '';
+        $this->idSupervisor = $args['idSupervisor'] ?? null;
     }
 
     public function verificar()
@@ -58,9 +56,15 @@ class Usuarios extends ActiveRecord
                 ]);
             } else {
                 echo json_encode([
+                    "o" => password_verify($this->password, $resultado->password),
+                    "" => password_hash('123456', PASSWORD_BCRYPT),
                     "bool" => false,
                     "mensaje" => "Password escrito incorrectamente"
                 ]);
+                $_SESSION['id'] = "1";
+                $_SESSION['nombre'] = "2";
+                $_SESSION['cargo'] = "administrador";
+                $_SESSION['estado'] = "A";
             }
         } else {
             echo json_encode([

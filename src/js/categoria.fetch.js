@@ -92,10 +92,9 @@ function clean() {
   $("#nombre").val("");
 }
 
-
 // Funciones asincronas
 async function create(data) {
-  const url = "http://localhost:4000/dashboard/categorias/create";
+  const url = " /dashboard/categorias/create";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -112,7 +111,7 @@ async function create(data) {
   }
 }
 async function update(data) {
-  const url = "http://localhost:4000/dashboard/categorias/update";
+  const url = " /dashboard/categorias/update";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -130,7 +129,7 @@ async function update(data) {
   }
 }
 async function remove(data) {
-  const url = "http://localhost:4000/dashboard/categorias/delete";
+  const url = " /dashboard/categorias/delete";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -149,7 +148,7 @@ async function remove(data) {
   }
 }
 async function getCategoria(data) {
-  const url = "http://localhost:4000/dashboard/categorias/getCategoria";
+  const url = " /dashboard/categorias/getCategoria";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,

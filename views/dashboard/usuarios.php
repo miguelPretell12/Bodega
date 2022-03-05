@@ -70,12 +70,6 @@ $script = '<script src ="/build/js/usuarios.fetch.js"></script>';
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="sede">Sede</label>
-                        <select id="sede" class="form-control">
-                            <option value="">-- Seleccione --</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="">estado</label>
                         <select id="estado" class="form-control">
                             <option value="">-- Seleccione --</option>

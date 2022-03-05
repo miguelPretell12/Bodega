@@ -12,6 +12,7 @@
                 <th>Sede</th>
                 <th>Empresa</th>
                 <th>Direccion</th>
+                <th>Supervisor</th>
                 <th></th>
             </tr>
         </thead>
@@ -19,13 +20,6 @@
         </tbody>
     </table>
 </div>
-
-
-<?php
-$script = '<script src ="/build/js/sedes.fetch.js"></script>';
-?>
-
-
 <div class="modal fade" id="modalSede" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -48,6 +42,12 @@ $script = '<script src ="/build/js/sedes.fetch.js"></script>';
                         <label for="">Empresa</label>
                         <input type="text" id="empresa" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label for="">Supervisor</label>
+                        <select class="form-control" id="supervisor">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -57,3 +57,7 @@ $script = '<script src ="/build/js/sedes.fetch.js"></script>';
         </div>
     </div>
 </div>
+
+<?php
+$script = '<script src ="/build/js/sedes.fetch.js"></script>';
+?>

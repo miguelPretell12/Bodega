@@ -3,6 +3,9 @@
 namespace Controllers;
 
 use Model\Sedes;
+use Model\UsuarioCargo;
+use Model\Usuarios;
+use Model\ViewSedeSupervisor;
 use MVC\Router;
 
 class SedeController
@@ -60,7 +63,20 @@ class SedeController
 
     public static function getSedes()
     {
-        echo json_encode(['data' => Sedes::all()]);
+        $sedesupervisor = "
+            SELECT 
+                s.id as id,
+                s.nombre as sede,
+                s.direccion as direccion,
+                s.empresa as empresa,
+                concat(u.nombre,' ',u.apellido) as supervisornombre,
+                c.nombre as cargo
+            FROM sedes s
+            inner join usuarios u on u.id = s.idSupervisor
+            inner join cargos c on c.id = u.idCargo 
+        ";
+        $resultado = ViewSedeSupervisor::SQL($sedesupervisor);
+        echo json_encode(['data' => $resultado]);
     }
 
     public static function getSede()
@@ -72,5 +88,20 @@ class SedeController
 
             echo json_encode(["data" => $sede]);
         }
+    }
+
+    public static function getSupervisor()
+    {
+        $usuariocargo = "SELECT 
+            u.id as id,
+            concat(u.nombre,' ',u.apellido) as nombre,
+            u.dni as dni,
+            u.correo as correo,
+            c.nombre as cargo,
+            u.estado as estado
+         FROM usuarios u
+         inner join cargos c on c.id = u.idCargo where c.nombre = 'supervisor'";
+        $resultado = UsuarioCargo::SQL($usuariocargo);
+        echo json_encode(['data' => $resultado]);
     }
 }

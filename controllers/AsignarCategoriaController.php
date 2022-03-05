@@ -66,7 +66,8 @@ class AsignarCategoriaController
             $resultado = $asigcat->actualizar();
 
             echo json_encode([
-                "res" => $resultado
+                "res" => $resultado,
+                "estado" => $asigcat->estado
             ]);
         }
     }

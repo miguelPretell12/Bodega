@@ -4,12 +4,12 @@ $(document).ready(function () {
   formulario();
   obtenerData();
   deleteUsuario();
-  getSedes();
+  // getSedes();
   getUsuarios();
 });
 
 async function create(data) {
-  const url = "http://localhost:4000/dashboard/usuarios/create";
+  const url = " /dashboard/usuarios/create";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -27,7 +27,7 @@ async function create(data) {
 }
 
 async function update(data) {
-  const url = "http://localhost:4000/dashboard/usuarios/update";
+  const url = " /dashboard/usuarios/update";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -46,7 +46,7 @@ async function update(data) {
 }
 
 async function remove(data) {
-  const url = "http://localhost:4000/dashboard/usuarios/delete";
+  const url = " /dashboard/usuarios/delete";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -71,7 +71,7 @@ async function remove(data) {
 }
 
 async function getUsuario(data) {
-  const url = "http://localhost:4000/dashboard/usuarios/getUsuario";
+  const url = " /dashboard/usuarios/getUsuario";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -93,7 +93,7 @@ async function getUsuario(data) {
 }
 
 async function getCargos() {
-  const url = "http://localhost:4000/dashboard/cargos/lists";
+  const url = " /dashboard/cargos/lists";
   const respuesta = await fetch(url);
 
   const resultado = await respuesta.json();
@@ -112,7 +112,7 @@ async function getCargos() {
 }
 
 async function getSedes() {
-  const url = "http://localhost:4000/dashboard/sedes/getSedes";
+  const url = " /dashboard/sedes/getSedes";
   const respuesta = await fetch(url);
 
   const resultado = await respuesta.json();
@@ -131,7 +131,7 @@ async function getSedes() {
 }
 
 async function getUsuarios() {
-  const url = "http://localhost:4000/dashboard/usuarios/getUsuarios";
+  const url = " /dashboard/usuarios/getUsuarios";
   const respuesta = await fetch(url);
 
   const resultado = await respuesta.json();
@@ -203,7 +203,6 @@ function formulario() {
     const contrasenia = $("#password").val();
     const cargo = $("#cargo").val();
     const estado = $("#estado").val();
-    const sede = $("#sede").val();
     const supervisor = $("#supervisor").val();
     // Form Data
     const data = new FormData();
@@ -215,7 +214,6 @@ function formulario() {
     data.append("idCargo", cargo);
     data.append("estado", estado);
     data.append("idSupervisor", supervisor);
-    data.append("idSede", sede);
     if (
       nombre == "" ||
       apellido == "" ||
@@ -247,6 +245,8 @@ function obtenerData() {
   $(document).on("click", "#edit", function (e) {
     clean();
     const id = e.target.dataset.idusuario;
+    const password = document.querySelector("#password").parentElement;
+    password.style.display = "none";
     $("#title").text("Editar Usuario");
     const data = new FormData();
     data.append("id", id);

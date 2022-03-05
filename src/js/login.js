@@ -23,7 +23,7 @@ function iniciarSession() {
 }
 
 async function iniciar(data) {
-  const url = "http://localhost:4000/login/iniciar";
+  const url = " /login/iniciar";
   const res = await fetch(url, {
     method: "POST",
     body: data,

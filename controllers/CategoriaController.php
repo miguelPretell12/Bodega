@@ -12,7 +12,7 @@ class CategoriaController
         $router->viewDashboard('dashboard/categoria', []);
     }
 
-    public static function create()
+    public static function creates()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $categoria = new Categoria($_POST);

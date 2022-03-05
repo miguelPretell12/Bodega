@@ -3,6 +3,7 @@ $(document).ready(function () {
   formulario();
   obtenerData();
   eliminarSede();
+  getSupervisor();
 });
 
 $(document).on("click", "#btn", function () {
@@ -24,9 +25,10 @@ function tableAll() {
       url: "/dashboard/sedes/getSedes",
     },
     columns: [
-      { data: "nombre" },
+      { data: "sede" },
       { data: "empresa" },
       { data: "direccion" },
+      { data: "supervisornombre" },
       {
         data: null,
         render: function (data, type, row) {
@@ -47,14 +49,16 @@ function formulario() {
     const nombre = $("#nombre").val();
     const direccion = $("#direccion").val();
     const empresa = $("#empresa").val();
+    const supervisor = $("#supervisor").val();
 
     // Form Data
     const data = new FormData();
     data.append("nombre", nombre.toLowerCase());
     data.append("direccion", direccion.toLowerCase());
     data.append("empresa", empresa.toLowerCase());
+    data.append("idSupervisor", supervisor);
 
-    if (nombre == "" || direccion == "" || empresa == "") {
+    if (nombre == "" || direccion == "" || empresa == "" || supervisor == "") {
       Swal.fire({
         position: "top-end",
         icon: "error",
@@ -102,7 +106,7 @@ function eliminarSede() {
 }
 
 async function create(data) {
-  const url = "http://localhost:4000/dashboard/sedes/create";
+  const url = " /dashboard/sedes/create";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -120,7 +124,7 @@ async function create(data) {
   }
 }
 async function update(data) {
-  const url = "http://localhost:4000/dashboard/sedes/update";
+  const url = " /dashboard/sedes/update";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -135,7 +139,7 @@ async function update(data) {
   }
 }
 async function getSede(datas) {
-  const url = "http://localhost:4000/dashboard/sedes/getSede";
+  const url = " /dashboard/sedes/getSede";
   const respuesta = await fetch(url, {
     method: "POST",
     body: datas,
@@ -151,7 +155,7 @@ async function getSede(datas) {
   $("#empresa").val(data.empresa);
 }
 async function remove(data) {
-  const url = "http://localhost:4000/dashboard/sedes/delete";
+  const url = " /dashboard/sedes/delete";
   const respuesta = await fetch(url, {
     method: "POST",
     body: data,
@@ -170,4 +174,25 @@ async function remove(data) {
       "error"
     );
   }
+}
+
+async function getSupervisor() {
+  const url = "/dashboard/sedes/getSupervisor";
+  const respuesta = await fetch(url);
+
+  const resultado = await respuesta.json();
+
+  const { data } = resultado;
+
+  const supervisor = document.querySelector("#supervisor");
+  data.forEach((d) => {
+    const option = document.createElement("option");
+    const { id, nombre, dni, correo, cargo, estado } = d;
+    if (estado == "A") {
+      option.value = id;
+      option.innerHTML = `${nombre}`;
+      supervisor.appendChild(option);
+    }
+  });
+  console.log(data);
 }

@@ -10,7 +10,6 @@ use Controllers\LoginController;
 use Controllers\SedeController;
 use Controllers\SupervisorController;
 use Controllers\UsuariosController;
-use Model\EmpleadoCapitales;
 use MVC\Router;
 
 require_once __DIR__ . '/../includes/app.php';
@@ -24,7 +23,7 @@ $router->get("/login/recuperar", [LoginController::class, 'verificar']);
 
 // Dashboard
 $router->get('/dashboard', [AdminController::class, 'index']);
-
+$router->get("/administrador/cerrar", [AdminController::class, 'cerrar']);
 // Cargos
 $router->get('/dashboard/cargos', [CargosController::class, 'index']);
 $router->get('/dashboard/cargos/lists', [CargosController::class, 'lists']);
@@ -45,7 +44,7 @@ $router->post('/dashboard/usuarios/delete', [UsuariosController::class, 'delete'
 // Categoria
 $router->get('/dashboard/categorias', [CategoriaController::class, 'index']);
 $router->get('/dashboard/categorias/getCategorias', [CategoriaController::class, 'getCategorias']);
-$router->post('/dashboard/categorias/create', [CategoriaController::class, 'create']);
+$router->post('/dashboard/categorias/create', [CategoriaController::class, 'creates']);
 $router->post('/dashboard/categorias/update', [CategoriaController::class, 'update']);
 $router->post('/dashboard/categorias/delete', [CategoriaController::class, 'delete']);
 $router->post('/dashboard/categorias/getCategoria', [CategoriaController::class, 'getCategoria']);
@@ -57,6 +56,7 @@ $router->post('/dashboard/sedes/getSede', [SedeController::class, 'getSede']);
 $router->post('/dashboard/sedes/create', [SedeController::class, 'create']);
 $router->post('/dashboard/sedes/update', [SedeController::class, 'update']);
 $router->post('/dashboard/sedes/delete', [SedeController::class, 'delete']);
+$router->get("/dashboard/sedes/getSupervisor", [SedeController::class, 'getSupervisor']);
 
 //asignatCategoria
 $router->get("/dashboard/asignarCategoria", [AsignarCategoriaController::class, 'index']);

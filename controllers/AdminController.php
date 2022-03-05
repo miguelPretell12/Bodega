@@ -10,4 +10,10 @@ class AdminController
     {
         $router->viewDashboard('dashboard/index', []);
     }
+
+    public static function cerrar()
+    {
+        $_SESSION = [];
+        header("location: /");
+    }
 }

@@ -31,11 +31,13 @@ function tableAll() {
       {
         data: null,
         render: function (data, type, row) {
-          if (data.estado == "H") {
-            return `<button class="btn btn-success" id="status" data-idasig = "${data.id}">Habilitado</button>`;
-          } else {
-            return `<button class="btn btn-danger" id="status" data-idasig = "${data.id}">Inhabilitado</button>`;
-          }
+          return `<button class="btn btn-${
+            data.estado == "H" ? "success" : "danger"
+          } fas fa-${data.estado == "H" ? "check" : "times"}-circle"
+          id="status" data-idasig = "${data.id}" data-estado = "${data.estado}"
+            >
+            <i></i>
+            </button>`;
         },
       },
     ],
@@ -61,18 +63,17 @@ function formulario() {
 function updateStatus() {
   $(document).on("click", "#status", function (e) {
     const idasig = e.target.dataset.idasig;
-    const estado =
-      e.target.textContent.toLowerCase() == "habilitado" ? "H" : "I";
+    const estado = e.target.dataset.estado;
     const data = new FormData();
     data.append("id", idasig);
     data.append("estado", estado);
 
-    updateEstado(data);
+    updateEstado(data, e);
   });
 }
 
 async function create(data) {
-  const url = "http://localhost:4000/dashboard/asignarCategoria/create";
+  const url = " /dashboard/asignarCategoria/create";
   spinnerHide("flex");
   const respuesta = await fetch(url, { method: "POST", body: data });
 
@@ -91,26 +92,36 @@ async function create(data) {
   }
 }
 
-async function updateEstado(data) {
-  const url = "http://localhost:4000/dashboard/asignarCategoria/updateStatus";
-  spinnerHide("flex");
+async function updateEstado(data, e) {
+  const url = " /dashboard/asignarCategoria/updateStatus";
+
+  e.target.classList.remove("fa-times-circle", "fa-check-circle");
+  e.target.classList.add("fa-spinner", "fa-spin");
+
   const respuesta = await fetch(url, { method: "POST", body: data });
   if (respuesta) {
-    spinnerHide("none");
-    tableAll();
+    e.target.classList.remove("fa-spinner", "fa-spin");
   }
 
   const resultado = await respuesta.json();
-  const { res } = resultado;
+  const { res, estado } = resultado;
   if (res) {
-    Swal.fire("Exito!", "Se pudo cambiar el estado correctamente", "success");
+    if (estado == "H") {
+      e.target.classList.remove("btn-danger", "fa-times-circle");
+      e.target.classList.add("btn-success", "fa-check-circle");
+      e.target.dataset.estado = "H";
+    } else {
+      e.target.classList.remove("btn-success", "fa-check-circle");
+      e.target.classList.add("btn-danger", "fa-times-circle");
+      e.target.dataset.estado = "I";
+    }
   } else {
     Swal.fire("Error!", "Hubo un error al cambiar el estado", "error");
   }
 }
 
 async function getCategorias() {
-  const url = "http://localhost:4000/dashboard/categorias/getCategorias";
+  const url = " /dashboard/categorias/getCategorias";
 
   const respuesta = await fetch(url);
 
@@ -130,7 +141,7 @@ async function getCategorias() {
 }
 
 async function getSedes() {
-  const url = "http://localhost:4000//dashboard/sedes/getSedes";
+  const url = " /dashboard/sedes/getSedes";
   const respuesta = await fetch(url);
   const resultado = await respuesta.json();
 
@@ -138,10 +149,10 @@ async function getSedes() {
 
   const select = document.querySelector("#sede");
   data.forEach((d) => {
-    const { id, nombre, empresa } = d;
+    const { id, sede, empresa } = d;
     const option = document.createElement("option");
     option.value = id;
-    option.textContent = `${nombre} (${empresa})`;
+    option.textContent = `${sede} (${empresa})`;
 
     select.appendChild(option);
   });
